@@ -105,11 +105,11 @@ async function opponentLoop() {
 
   // display info
   // Opp 1
-  console.log(chalk.white.bgYellow("Opponent #1: ", opp1));
+  console.log(chalk.white.bgGreen("Opponent #1: ", opp1));
   console.log();
-  console.log(chalk.white("Wave 1 Trends:"));
+  console.log(chalk.white("Wave 1 Trends (Last 20 games):"));
   console.log(
-    chalk.cyanBright("Snail: "),
+    chalk.cyanBright("Snail:   "),
     chalk.bgCyan(" ".repeat(opp1History.snails))
   );
   console.log(
@@ -117,7 +117,7 @@ async function opponentLoop() {
     chalk.bgYellow(" ".repeat(opp1History.kingUp))
   );
   console.log(
-    chalk.redBright("Save: "),
+    chalk.redBright("Save:    "),
     chalk.bgRed(" ".repeat(opp1History.save))
   );
   console.log();
@@ -125,17 +125,18 @@ async function opponentLoop() {
   Object.keys(opp1History.playstyles).forEach((playstyle) => {
     console.log(
       playstyle,
+      " ".repeat(Math.max(0, 15 - playstyle.length)),
       ": ",
-      chalk.bgWhite(" ".repeat(opp1History[playstyle]))
+      chalk.bgWhite(" ".repeat(opp1History.playstyles[playstyle]))
     );
   });
   console.log("--------------");
   // Opp 2
-  console.log(chalk.white.bgYellow("Opponent #2: ", opp2));
+  console.log(chalk.white.bgRed("Opponent #2: ", opp2));
   console.log();
   console.log(chalk.white("Wave 1 Trends:"));
   console.log(
-    chalk.cyanBright("Snail: "),
+    chalk.cyanBright("Snail:   "),
     chalk.bgCyan(" ".repeat(opp2History.snails))
   );
   console.log(
@@ -143,7 +144,7 @@ async function opponentLoop() {
     chalk.bgYellow(" ".repeat(opp2History.kingUp))
   );
   console.log(
-    chalk.redBright("Save: "),
+    chalk.redBright("Save:    "),
     chalk.bgRed(" ".repeat(opp2History.save))
   );
   console.log();
@@ -151,11 +152,14 @@ async function opponentLoop() {
   Object.keys(opp2History.playstyles).forEach((playstyle) => {
     console.log(
       playstyle,
+      " ".repeat(Math.max(0, 15 - playstyle.length)),
       ": ",
-      chalk.bgWhite(" ".repeat(opp2History[playstyle]))
+      chalk.bgWhite(" ".repeat(opp2History.playstyles[playstyle]))
     );
   });
-
+  console.log();
+  console.log("--------------");
+  console.log();
   await input({
     message:
       "Press Enter to begin collecting information on your next opponents.",

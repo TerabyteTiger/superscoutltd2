@@ -31,7 +31,6 @@ async function getHistory(playerID) {
     },
   });
   let matchHistory = data.data;
-  console.log(matchHistory);
 
   // for each match, find player's data, then loop those to check for what wave 1 was
   matchHistory = matchHistory.map((match) =>
@@ -78,16 +77,17 @@ async function run() {
   console.log(
     "Welcome to SuperScout for LTD2\n Press Ctrl + C to exit this program at any time.\n\n"
   );
-  const primaryName = await input({
-    message: "What is your LTD2 Player Name? ",
-  });
+  // 👇🏻 Can't auto pull live game data, so commenting this out until I do something with user data
+  // const primaryName = await input({
+  //   message: "What is your LTD2 Player Name? ",
+  // });
 
-  let myID = await getPlayerID(primaryName);
-  let historyObj = await getHistory(myID);
+  // let myID = await getPlayerID(primaryName);
+  // let historyObj = await getHistory(myID);
 
   opponentLoop();
 }
-// run();
+run();
 // console.log(chalk.blue.bgGreen(" ".repeat(3)));
 
 async function opponentLoop() {
